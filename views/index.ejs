@@ -1,24 +1,5 @@
-<section class="projects">
-    <h2 class="projects__heading">My work</h2>
-    <ul class="projects__list">
-      <% data.forEach(project => { %>
-        <li>
-          <a href="#">
-            <span><%= project.name %></span>
-            <% if (Array.isArray(project.images)) { %>
-              <% project.images.forEach(imgPath => { %>
-                <img src="<%= imgPath %>" alt="<%= project.name %>">
-              <% }) %>
-            <% } else { %>
-              <img src="<%= project.images %>" alt="<%= project.name %>">
-            <% } %>
-          </a>
-        </li>
-      <% }) %>
-    </ul>
-
+<section class="projects" id="gallery">
     <div class="slider-container">
-
       <div class="slider-wrapper swiper-wrapper">
         <% data.forEach(project => { %>
           <div class="slider-item swiper-slide" style="background-image: url('<%= project.cover %>'); background-size: cover; background-position: center;">
@@ -57,7 +38,7 @@
         <p class="author__body">3D artist, designer</p>
     </div>
 </div>
-<section class="about">
+<section class="about" id="about">
     <div class="about__card">
       <h2 class="about__heading">About me</h2>
       <p class="about__text">

@@ -22,6 +22,7 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
     
 
@@ -421,4 +422,41 @@ textarea{
 
 .slider-navigations button#slide-next {
   right: 20px;
+}
+
+.contact-form {
+  background: rgba(234, 234, 234, 0.3);
+  color: var(--gray);
+  max-width: 500px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid var(--black);
+  margin: 30px 0;
+}
+
+.contact-input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: var(--black);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.contact-input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
 }

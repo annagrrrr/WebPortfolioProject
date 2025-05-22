@@ -20,58 +20,24 @@
     <div class="slider-container">
 
       <div class="slider-wrapper swiper-wrapper">
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 01</h3>
-            <h2 class="slide-title">Main title</h2>
-            <p class="slide-description">First project</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
+        <% data.forEach(project => { %>
+          <div class="slider-item swiper-slide" style="background-image: url('<%= project.cover %>'); background-size: cover; background-position: center;">
+            <div class="slide-content">
+              <h3 class="slide-subtitle"><%= project.name %></h3>
+              <h2 class="slide-title"><%= project.name %></h2>
+              <p class="slide-description"><%= project.description %></p>
+              <a href="#" class="slide-button"><span>Learn More</span></a>
+            </div>
           </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 02</h3>
-            <h2 class="slide-title">Another one</h2>
-            <p class="slide-description">Second project</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 03</h3>
-            <h2 class="slide-title">Newest</h2>
-            <p class="slide-description">This one is the newest</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 04</h3>
-            <h2 class="slide-title">Oldest project</h2>
-            <p class="slide-description">This one is the oldest</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 05</h3>
-            <h2 class="slide-title">Something new</h2>
-            <p class="slide-description">I tried something new here</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
+        <% }) %>
       </div>
 
       <div class="slider-controls">
         <ul class="slider-pagination">
-          <div class="slider-indicator">
-
-          </div>
-          <li class="slider-tab">lorem ipsum</li>
-          <li class="slider-tab">ipsum ipsum</li>
-          <li class="slider-tab">lorem lorem</li>
-          <li class="slider-tab">what ipsum</li>
-          <li class="slider-tab">lorem what</li>
+          <div class="slider-indicator"></div>
+          <% data.forEach(project => { %>
+            <li class="slider-tab"><%= project.name %></li>
+          <% }) %>
         </ul>
       </div>
 
@@ -131,79 +97,3 @@
     </div>
   </div>
 </section>
-<!-- <section class="projects">
-    <h2 class="projects__heading">My work</h2>
-    <ul class="projects__list">
-      <% data.forEach(project => { %>
-        <li>
-          <a href="#">
-            <span><%= project.name %></span>
-            <% if (Array.isArray(project.images)) { %>
-              <% project.images.forEach(imgPath => { %>
-                <img src="<%= imgPath %>" alt="<%= project.name %>">
-              <% }) %>
-            <% } else { %>
-              <img src="<%= project.images %>" alt="<%= project.name %>">
-            <% } %>
-          </a>
-        </li>
-      <% }) %>
-    </ul>
-
-    <div class="slider-container">
-
-      <div class="slider-wrapper swiper-wrapper">
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 01</h3>
-            <h2 class="slide-title">Main title</h2>
-            <p class="slide-description">First project</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 02</h3>
-            <h2 class="slide-title">Another one</h2>
-            <p class="slide-description">Second project</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 03</h3>
-            <h2 class="slide-title">Newest</h2>
-            <p class="slide-description">This one is the newest</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 04</h3>
-            <h2 class="slide-title">Oldest project</h2>
-            <p class="slide-description">This one is the oldest</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-        <div class="slider-item swiper-slide">
-          <div class="slide-content">
-            <h3 class="slide-subtitle">Slide 05</h3>
-            <h2 class="slide-title">Something new</h2>
-            <p class="slide-description">I tried something new here</p>
-            <a href="#" class="slide-button"><span>Learn More</span></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="slider-controls">
-        <ul class="slider-pagination">
-          <li class="slider-tab">lorem ipsum</li>
-          <li class="slider-tab">ipsum ipsum</li>
-          <li class="slider-tab">lorem lorem</li>
-          <li class="slider-tab">what ipsum</li>
-          <li class="slider-tab">lorem what</li>
-        </ul>
-      </div>
-    </div>
-</section> -->
-    

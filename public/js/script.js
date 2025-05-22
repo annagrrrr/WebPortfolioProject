@@ -31,3 +31,10 @@ sliderTabs.forEach((tab, index) => {
 
 updateIndicator(sliderTabs[0], 0);
 window.addEventListener("resize", () => updateIndicator(sliderTabs[swiper.activeIndex], 0));
+
+sliderTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+        swiper.slideTo(index);
+        updateIndicator(tab);
+    });
+});

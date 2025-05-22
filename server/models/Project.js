@@ -10,6 +10,10 @@ const ProjectSchema = new Schema({
         type: String,
         required: true        
     },
+    cover: {
+        type: String,
+        required: true,
+    },
     images: {
         type: [String],
         default: []   

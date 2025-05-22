@@ -225,7 +225,7 @@ textarea{
   align-items: center;
 }
 
-.slider-wrapper .slider-item::before {
+/* .slider-wrapper .slider-item::before {
   position: absolute;
   content: "";
   left: 0;
@@ -251,7 +251,7 @@ textarea{
 
 .slider-wrapper .slider-item:nth-child(5):before {
   background-image: url('/img/landing-background-image.png');
-}
+} */
 
 .slider-wrapper .slider-item .slide-content {
   opacity: 0;

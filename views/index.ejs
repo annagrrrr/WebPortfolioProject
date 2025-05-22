@@ -1,3 +1,90 @@
+<section class="projects">
+    <h2 class="projects__heading">My work</h2>
+    <ul class="projects__list">
+      <% data.forEach(project => { %>
+        <li>
+          <a href="#">
+            <span><%= project.name %></span>
+            <% if (Array.isArray(project.images)) { %>
+              <% project.images.forEach(imgPath => { %>
+                <img src="<%= imgPath %>" alt="<%= project.name %>">
+              <% }) %>
+            <% } else { %>
+              <img src="<%= project.images %>" alt="<%= project.name %>">
+            <% } %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+
+    <div class="slider-container">
+
+      <div class="slider-wrapper swiper-wrapper">
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 01</h3>
+            <h2 class="slide-title">Main title</h2>
+            <p class="slide-description">First project</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 02</h3>
+            <h2 class="slide-title">Another one</h2>
+            <p class="slide-description">Second project</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 03</h3>
+            <h2 class="slide-title">Newest</h2>
+            <p class="slide-description">This one is the newest</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 04</h3>
+            <h2 class="slide-title">Oldest project</h2>
+            <p class="slide-description">This one is the oldest</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 05</h3>
+            <h2 class="slide-title">Something new</h2>
+            <p class="slide-description">I tried something new here</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-controls">
+        <ul class="slider-pagination">
+          <div class="slider-indicator">
+
+          </div>
+          <li class="slider-tab">lorem ipsum</li>
+          <li class="slider-tab">ipsum ipsum</li>
+          <li class="slider-tab">lorem lorem</li>
+          <li class="slider-tab">what ipsum</li>
+          <li class="slider-tab">lorem what</li>
+        </ul>
+      </div>
+
+      <div class="slider-navigations">
+        <button  id="slide-prev" class="material-symbols-rounded">arrow_left_alt</button>
+        <button id="slide-next" class="material-symbols-rounded">arrow_right_alt</button>
+      </div>
+    </div>
+</section>
+
+
+
+
 <div class="introduction">
     <div class="author">
         <h1 class="author__heading">Portfolio</h1>
@@ -44,10 +131,79 @@
     </div>
   </div>
 </section>
-
-<section class="projects">
+<!-- <section class="projects">
     <h2 class="projects__heading">My work</h2>
-    <ul class="project-list">
+    <ul class="projects__list">
+      <% data.forEach(project => { %>
+        <li>
+          <a href="#">
+            <span><%= project.name %></span>
+            <% if (Array.isArray(project.images)) { %>
+              <% project.images.forEach(imgPath => { %>
+                <img src="<%= imgPath %>" alt="<%= project.name %>">
+              <% }) %>
+            <% } else { %>
+              <img src="<%= project.images %>" alt="<%= project.name %>">
+            <% } %>
+          </a>
+        </li>
+      <% }) %>
     </ul>
-</section>
+
+    <div class="slider-container">
+
+      <div class="slider-wrapper swiper-wrapper">
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 01</h3>
+            <h2 class="slide-title">Main title</h2>
+            <p class="slide-description">First project</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 02</h3>
+            <h2 class="slide-title">Another one</h2>
+            <p class="slide-description">Second project</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 03</h3>
+            <h2 class="slide-title">Newest</h2>
+            <p class="slide-description">This one is the newest</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 04</h3>
+            <h2 class="slide-title">Oldest project</h2>
+            <p class="slide-description">This one is the oldest</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slide-content">
+            <h3 class="slide-subtitle">Slide 05</h3>
+            <h2 class="slide-title">Something new</h2>
+            <p class="slide-description">I tried something new here</p>
+            <a href="#" class="slide-button"><span>Learn More</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-controls">
+        <ul class="slider-pagination">
+          <li class="slider-tab">lorem ipsum</li>
+          <li class="slider-tab">ipsum ipsum</li>
+          <li class="slider-tab">lorem lorem</li>
+          <li class="slider-tab">what ipsum</li>
+          <li class="slider-tab">lorem what</li>
+        </ul>
+      </div>
+    </div>
+</section> -->
     

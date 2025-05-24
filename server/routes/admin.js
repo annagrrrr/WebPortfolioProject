@@ -70,10 +70,125 @@ router.post('/admin', async (req, res) => {
 //admin dashboard
 router.get('/dashboard', authMiddleware, async (req, res) => {
     
-    res.render('admin/dashboard');
+    try {
+        const locals = {
+            title: 'Dashboard',
+            description: 'This is my 3d-art portfolio'
+        }
+
+        const data = await Project.find();
+        res.render('admin/dashboard', {
+            locals,
+            data,
+            layout: adminLayout
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//admin new project create
+router.get('/add-project', authMiddleware, async (req, res) => {
+    
+    try {
+        const locals = {
+            title: 'Add project',
+            description: 'This is my 3d-art portfolio'
+        }
+
+        const data = await Project.find();
+        res.render('admin/add-project', {
+            locals,
+            layout: adminLayout
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//post create proj
+router.post('/add-project', authMiddleware, async (req, res) => {
+    
+    try {
+        try {
+            const newProject = new Project({
+                name: req.body.name,
+                description: req.body.description,
+                cover: req.body.cover
+                //add images
+            });
+
+            await Project.create(newProject);
+            res.redirect('/dashboard');
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//edit project
+router.get('/edit-project/:id', authMiddleware, async (req, res) => {
+  try {
+
+    const locals = {
+      title: "Edit project",
+      description: "This is my 3d-art portfolio",
+    };
+
+    const data = await Project.findOne({ _id: req.params.id });
+
+    res.render('admin/edit-project', {
+      locals,
+      data,
+      layout: adminLayout
+    })
+
+  } catch (error) {
+    console.log(error);
+  }
 
 });
 
+
+//edit project put
+router.put('/edit-project/:id', authMiddleware, async (req, res) => {
+    
+    try {
+        await Project.findByIdAndUpdate(req.params.id, {
+            name: req.body.name,
+            description: req.body.description,
+            cover: req.body.cover
+        });
+
+        res.redirect(`/edit-project/${req.params.id}`);
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//delete project
+router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
+    try {
+        await Project.deleteOne( { _id: req.params.id } );
+        res.redirect('/dashboard');
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+//log out
+router.get('/logout', (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/');
+})
 // router.post('/admin', async (req, res) => {
 //     try {
 

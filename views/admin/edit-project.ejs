@@ -1,0 +1,21 @@
+<section class="admin">
+    <a href="/dashboard">&larr; Back</a>
+    <h2>View/Edit project</h2>
+
+    <form action="/delete-project/<%= data._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete" class="edit-project-button">
+    </form>
+
+    <form action="/edit-project/<%= data._id %>?_method=PUT" method="POST">
+
+        <input type="text" placeholder="Name" name="name" value="<%= data.name %>">
+
+        <textarea cols="50" rows="10" placeholder="Description" name="description"><%= data.description %></textarea>
+
+        <input type="text" placeholder="Cover" name="cover" value="<%= data.cover %>">
+
+        <!-- <input type="text" placeholder="Images" name="images"> -->
+
+        <input type="submit" value="Update" class="add-project-button">
+    </form>
+</section>

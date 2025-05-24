@@ -1,1 +1,22 @@
-<h1>DASHBOARD</h1>
+<section class="admin">
+    <h2 class="dashboard-header">Projects</h2>
+    <a href="/add-project" class="dashboard-button">+ Add New</a>
+
+    <ul class="dashboard-posts">
+        <% data.forEach(project => { %>
+            <li>
+                <a href="/project/<%= project._id %>">
+
+                    <%= project.name %> &nearr;
+                </a>
+                <div class="dashboard-project-controls">
+                    <a href="/edit-project/<%= project._id %>" class="dashboard-button">Edit</a>
+
+                    <form action="/delete-project/<%= project._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="dashboard-button">
+                    </form>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+</section>

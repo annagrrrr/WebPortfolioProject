@@ -16,6 +16,29 @@ router.get('', async (req, res) => {
     }
 });
 
+router.get('/project/:id', async (req, res) => {
+  try {
+    let slug = req.params.id;
+
+    const data = await Project.findById({ _id: slug });
+
+    const locals = {
+      name: data.name,
+      description: "This is my 3d-art portfolio",
+    }
+
+    res.render('project', { 
+      locals,
+      data,
+      currentRoute: `/project/${slug}`
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
 // function insertProjectData () {
 //     Project.insertMany([
 //         {

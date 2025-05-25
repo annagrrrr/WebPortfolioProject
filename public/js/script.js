@@ -2,6 +2,7 @@ const sliderTabs = document.querySelectorAll(".slider-tab");
 const sliderIndicator = document.querySelector(".slider-indicator");
 
 const updateIndicator = (tab, index) => {
+    if (!sliderIndicator) return;
     sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
     sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`
 }

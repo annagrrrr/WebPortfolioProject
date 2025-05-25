@@ -137,6 +137,7 @@ router.post('/add-project', authMiddleware, async (req, res) => {
             });
 
             await Project.create(newProject);
+            res.status(201).send('Project created');
             res.redirect('/dashboard');
 
         } catch (error) {
@@ -192,10 +193,10 @@ router.put('/edit-project/:id', authMiddleware, async (req, res) => {
 router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
     try {
         await Project.deleteOne( { _id: req.params.id } );
-        res.redirect('/dashboard');
-
+        res.status(200).send('Deleted successfully');
     } catch (error) {
         console.log(error);
+        res.status(500).send('Error deleting');
     }
 });
 
@@ -204,7 +205,6 @@ router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
     try {
         await Request.deleteOne( { _id: req.params.id } );
         res.redirect('/requests');
-
     } catch (error) {
         console.log(error);
     }

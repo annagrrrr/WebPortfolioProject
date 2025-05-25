@@ -650,6 +650,10 @@ textarea{
   flex-direction: column;
 }
 
+.add-project-header {
+  margin-top: 30px;
+}
+
 .add-project-input-box {
   position: relative;
   width: 100%;

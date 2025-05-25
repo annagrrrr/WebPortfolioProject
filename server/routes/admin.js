@@ -126,26 +126,23 @@ router.get('/add-project', authMiddleware, async (req, res) => {
 
 //post create proj
 router.post('/add-project', authMiddleware, async (req, res) => {
-    
     try {
-        try {
-            const newProject = new Project({
-                name: req.body.name,
-                description: req.body.description,
-                cover: req.body.cover
-                //add images
-            });
+        const newProject = new Project({
+            name: req.body.name,
+            description: req.body.description,
+            cover: req.body.cover
+        });
 
-            await Project.create(newProject);
-            res.status(201).send('Project created');
-            res.redirect('/dashboard');
+        const savedProject = await newProject.save();
 
-        } catch (error) {
-            console.log(error);
-        }
+        // Возвращаем JSON с данными нового проекта
+        res.status(201).json({
+            project: savedProject
+        });
 
     } catch (error) {
         console.log(error);
+        res.status(500).send('error');
     }
 });
 

@@ -1,6 +1,6 @@
 <section class="default-section">
     <h2 class="dashboard-header">Projects</h2>
-    <a href="/add-project" class="dashboard-btn dashboard-btn-add btn">+ Add New</a>
+    <!-- <a href="/add-project" class="dashboard-btn dashboard-btn-add btn">+ Add New</a> -->
 
     <ul class="dashboard-projects">
         <% data.forEach(project => { %>
@@ -19,4 +19,25 @@
             </li>
         <% }) %>
     </ul>
+
+    <h2 class="add-project-header">Add project</h2>
+
+    <form action="/add-project" method="POST" class="add-project">
+
+        <div class="add-project-input-box">
+            <input type="text" placeholder="Name" name="name">
+        </div>
+
+        <div class="add-project-input-box">
+            <textarea cols="50" rows="10" placeholder="Description" name="description"></textarea>
+        </div>
+            
+        <div class="add-project-input-box">
+            <input type="text" placeholder="Cover (/img/<your_image>.png)" name="cover">
+        </div>
+
+        <!-- <input type="text" placeholder="Images" name="images"> -->
+
+        <input type="submit" value="Add" class="add-project-button btn">
+        </form>
 </section>

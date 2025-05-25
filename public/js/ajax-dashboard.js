@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const deleteButtons = document.querySelectorAll(".delete-btn");
+    const projectsList = document.querySelector("ul.dashboard-projects");
+    if (!projectsList) return;
 
-    deleteButtons.forEach(button => {
-        button.addEventListener("click", async (e) => {
+    projectsList.addEventListener("click", async (e) => {
+        const target = e.target;
+        if (target.classList.contains("delete-btn")) {
             e.preventDefault();
 
-            const projectId = button.dataset.id;
+            const projectId = target.dataset.id;
+            if (!projectId) return;
 
             try {
                 const response = await fetch(`/delete-project/${projectId}`, {
@@ -13,14 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (response.ok) {
-                    const liElement = button.closest("li");
+                    const liElement = target.closest("li");
                     if (liElement) {
                         liElement.remove();
                     }
+                } else {
+                    console.error("error!!!");
                 }
             } catch (error) {
                 console.log(error);
             }
-        });
+        }
     });
 });

@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next) => {
     const token = req.cookies.token;
 
     if(!token){
-        return res.status(401).json({ message: 'Unauthorized'});
+        return res.status(401).render('errors/401');
     }
 
     try {
@@ -24,7 +24,7 @@ const authMiddleware = (req, res, next) => {
         req.userId = decoded.userId;
         next();
     } catch(error) {
-        return res.status(401).json({ message: 'Unauthorized'});
+        return res.status(401).render('errors/401');
     }
 }
 
@@ -54,6 +54,7 @@ router.get('/requests', async (req, res) => {
         res.render('admin/requests', { locals, data, layout: adminLayout });
     } catch (error) {
         console.log(error);
+        return res.status(500).render('errors/500');
     }
 });
 
@@ -65,13 +66,13 @@ router.post('/admin', async (req, res) => {
         const user = await User.findOne({username});
 
         if(!user){
-            return res.status(401).json({ message: 'Invalid credentials'});
+            return res.status(401).render('errors/401');
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if(!isPasswordValid) {
-            return res.status(401).json({ message: 'Invalid credentials'});
+            return res.status(401).render('errors/401');
         }
 
         const token = jwt.sign({ userId: user._id}, jwtSecret )
@@ -135,14 +136,13 @@ router.post('/add-project', authMiddleware, async (req, res) => {
 
         const savedProject = await newProject.save();
 
-        // Возвращаем JSON с данными нового проекта
         res.status(201).json({
             project: savedProject
         });
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('error');
+        return res.status(500).render('errors/500');
     }
 });
 
@@ -165,6 +165,7 @@ router.get('/edit-project/:id', authMiddleware, async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    return res.status(500).render('errors/500');
   }
 
 });
@@ -183,6 +184,7 @@ router.put('/edit-project/:id', authMiddleware, async (req, res) => {
         res.redirect(`/edit-project/${req.params.id}`);
     } catch (error) {
         console.log(error);
+        return res.status(500).render('errors/500');
     }
 });
 
@@ -193,7 +195,7 @@ router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
         res.status(200).send('Deleted successfully');
     } catch (error) {
         console.log(error);
-        res.status(500).send('Error deleting');
+        return res.status(500).render('errors/500');
     }
 });
 
@@ -204,6 +206,7 @@ router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
         res.redirect('/requests');
     } catch (error) {
         console.log(error);
+        return res.status(500).render('errors/500');
     }
 });
 
@@ -242,5 +245,4 @@ router.get('/logout', (req, res) => {
 //         console.log(error);
 //     }
 // });
-
 module.exports = router;

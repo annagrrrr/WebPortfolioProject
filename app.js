@@ -38,6 +38,9 @@ app.set('view engine', 'ejs');
 app.use('/', require('./server/routes/main'));
 app.use('/', require('./server/routes/admin'));
 
+app.use((req, res, next) => {
+  res.status(404).render('errors/404');
+});
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 })

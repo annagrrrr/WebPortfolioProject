@@ -532,6 +532,8 @@ textarea{
 
 .admin-header {
   margin: 20px 0;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 .admin-login {
@@ -561,6 +563,8 @@ textarea{
   border: none;
   border-radius: 10px;
   outline: none;
+  padding: 20px;
+  font-size: 1.4rem;
 }
 
 .admin-btn {
@@ -574,7 +578,7 @@ textarea{
   color: var(--gray);
   font-family: "Rubik", sans-serif;
   font-size: 1rem;
-  padding: 20px;
+  text-transform: uppercase;
 }
 
 .dashboard-header {
@@ -695,6 +699,16 @@ textarea{
   margin-right: 40%;
 }
 
+.project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+}
+
 .footer {
   background-color: var(--black);
   min-height: 300px;
@@ -765,4 +779,13 @@ textarea{
 .request-sent-header {
   text-transform: uppercase;
   font-size: 2rem;
+}
+
+.error-container {
+  background-image: url("/img/default-background2.png");
+}
+
+.error-back-btn {
+  padding: 20px;
+  margin: 30px;
 }

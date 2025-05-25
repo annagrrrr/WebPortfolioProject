@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
+const Request = require('../models/Request');
+const fs = require('fs');
+const path = require('path');
 
 router.get('', async (req, res) => {
     const locals = {
@@ -10,7 +13,7 @@ router.get('', async (req, res) => {
 
     try {
         const data = await Project.find();
-        res.render('index', { locals, data });
+        res.render('index', { locals, data});
     } catch (error) {
         console.log(error);
     }
@@ -29,8 +32,7 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('project', { 
       locals,
-      data,
-      currentRoute: `/project/${slug}`
+      data
     });
   } catch (error) {
     console.log(error);
@@ -51,7 +53,45 @@ router.get('/project/:id', async (req, res) => {
 // insertProjectData();
 
 router.get('/contact', (req, res) => {
-    res.render('contact');
+    res.render('contact', {
+    });
+});
+
+router.get('/request-sent', (req, res) => {
+    res.render('request-sent');
+});
+
+//create request
+router.post('/contact', async (req, res) => {
+    
+    try {
+        try {
+            const { name, email, request } = req.body;
+            const logMessage = `[${new Date().toISOString()}] Request from ${name} (${email}): ${request}\n`;
+            const logFilePath = path.join(__dirname, '../logs/requests.log');
+
+            fs.appendFile(logFilePath, logMessage, (err) => {
+                if (err) {
+                    console.error(err);
+                }
+            });
+            const newRequest = new Request({
+                name: req.body.name,
+                email: req.body.email,
+                request: req.body.request
+            });
+
+            await Request.create(newRequest);
+            console.log(req.body);
+            res.redirect('/request-sent');
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 module.exports = router;

@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
+const Request = require('../models/Request');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const adminLayout = '../views/layouts/admin';
+const mainLayout = '../views/layouts/main';
 const jwtSecret = process.env.JWT_SECRET;
 
 
@@ -35,7 +37,21 @@ router.get('/admin', async (req, res) => {
             description: "This is my 3d-art portfolio"
         }
 
-        res.render('admin/index', { locals, layout: adminLayout });
+        res.render('admin/index', { locals, layout: mainLayout });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//requests page
+router.get('/requests', async (req, res) => {
+    try {
+        const locals = {
+            title: "Admin",
+            description: "This is my 3d-art portfolio"
+        }
+        const data = await Request.find();
+        res.render('admin/requests', { locals, data, layout: adminLayout });
     } catch (error) {
         console.log(error);
     }
@@ -183,6 +199,16 @@ router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
     }
 });
 
+//delte request
+router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
+    try {
+        await Request.deleteOne( { _id: req.params.id } );
+        res.redirect('/requests');
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 //log out
 router.get('/logout', (req, res) => {

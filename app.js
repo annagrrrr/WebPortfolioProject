@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
@@ -29,8 +30,7 @@ app.use(session({
     //cookie: { maxAge: new Date ( Date.now() + (3600000) ) }
 }))
 
-app.use(express.static('public'));
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');

@@ -172,6 +172,11 @@ textarea{
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.about__card:hover {
+  transform: scale(1.04);
 }
 
 .about__heading {
@@ -628,6 +633,11 @@ textarea{
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem 1.5rem;
   border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+}
+
+.dashboard-project:hover {
+  transform: scale(1.04);
 }
 
 .dashboard-project a {
@@ -703,7 +713,7 @@ textarea{
 .add-project-button {
   padding: 0.75rem 1.5rem;
   font-size: 1.2rem;
-  margin: auto;
+  margin: 2rem auto;
 }
 
 .add-project-back-btn {
@@ -722,9 +732,88 @@ textarea{
   border-radius: var(--border-radius);
 }
 
+.requests-header {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.requests-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.requests-request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  margin: 10px;
+  transition: all 0.2s ease;
+}
+
+.requests-request:hover {
+  transform: scale(1.02);
+}
+
+.requests-btn {
+  margin: 0.1rem 1.5rem 2rem 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.requests-request span {
+  margin: 20px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.request-sent {
+  background-image: url("/img/default-background2.png");
+}
+
+.request-sent-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.request-sent-wrapper a {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin: 30px;
+  padding: 1rem;
+}
+
+.request-sent-header {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.filter-btn {
+  padding: 0.4rem;
+  margin: 0.3rem;
+}
+
+.error-container {
+  background-image: url("/img/default-background2.png");
+}
+
+.error-back-btn {
+  padding: 20px;
+  margin: 30px;
+}
+
 .footer {
   background-color: var(--black);
-  min-height: 300px;
+  min-height: 200px;
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -761,78 +850,4 @@ textarea{
 .footer-socials-icon {
   max-width: 2rem;
   max-height: 2rem;
-}
-
-.requests-header {
-  margin-top: 5rem;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  font-size: 2rem;
-}
-
-.requests-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.requests-request {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.5rem;
-  border-radius: var(--border-radius);
-  margin: 10px;
-  transition: all 0.2s ease;
-}
-
-.requests-request:hover {
-  transform: scale(1.02);
-}
-
-.requests-btn {
-  margin: 0.1rem 1.5rem 4rem 1rem;
-  padding: 1rem;
-  font-size: 1rem;
-}
-
-.requests-request span {
-  margin: 20px;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-.request-sent {
-  background-image: url("/img/default-background2.png");
-}
-
-.request-sent-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-.request-sent-wrapper a {
-  color: var(--white);
-  font-size: 1.5rem;
-  margin: 30px;
-  padding: 1rem;
-}
-
-.request-sent-header {
-  text-transform: uppercase;
-  font-size: 2rem;
-}
-
-.error-container {
-  background-image: url("/img/default-background2.png");
-}
-
-.error-back-btn {
-  padding: 20px;
-  margin: 30px;
 }

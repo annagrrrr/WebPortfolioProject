@@ -189,9 +189,9 @@ router.put('/edit-project/:id', authMiddleware, async (req, res) => {
 });
 
 //delete project
-router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
+router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
   try {
-    await Request.deleteOne({ _id: req.params.id });
+    await Project.deleteOne({ _id: req.params.id });
     res.status(200).send('Deleted successfully');
   } catch (error) {
     console.log(error);

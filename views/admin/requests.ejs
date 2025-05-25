@@ -1,8 +1,15 @@
 <section class="default-section">
     <h2 class="requests-header">Requests</h2>
+
+    <div class="date-filters">
+        <button class="btn filter-btn" data-filter="all">Все</button>
+        <button class="btn filter-btn" data-filter="day">За последний день</button>
+        <button class="btn filter-btn" data-filter="week">За последнюю неделю</button>
+    </div>
+
     <ul class="requests-list">
         <% data.forEach(request => { %>
-            <li>
+            <li data-created-at="<%= request.createdAt.toISOString() %>">
                 <div class="requests-request">
                     <span>Name: <%= request.name %></span>
                     <span>Email: <%= request.email %></span>

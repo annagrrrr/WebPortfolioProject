@@ -44,7 +44,7 @@ router.get('/admin', async (req, res) => {
 });
 
 //requests page
-router.get('/requests', async (req, res) => {
+router.get('/requests', authMiddleware, async (req, res) => {
     try {
         const locals = {
             title: "Admin",
@@ -189,25 +189,26 @@ router.put('/edit-project/:id', authMiddleware, async (req, res) => {
 });
 
 //delete project
-router.delete('/delete-project/:id', authMiddleware, async (req, res) => {
-    try {
-        await Project.deleteOne( { _id: req.params.id } );
-        res.status(200).send('Deleted successfully');
-    } catch (error) {
-        console.log(error);
-        return res.status(500).render('errors/500');
-    }
+router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
+  try {
+    await Request.deleteOne({ _id: req.params.id });
+    res.status(200).send('Deleted successfully');
+  } catch (error) {
+    console.log(error);
+    return res.status(500).render('errors/500');
+  }
 });
+
 
 //delte request
 router.delete('/delete-request/:id', authMiddleware, async (req, res) => {
     try {
-        await Request.deleteOne( { _id: req.params.id } );
-        res.redirect('/requests');
+        await Request.deleteOne({ _id: req.params.id });
+        res.status(200).send('Deleted successfully');
     } catch (error) {
         console.log(error);
         return res.status(500).render('errors/500');
-    }
+  }
 });
 
 //log out

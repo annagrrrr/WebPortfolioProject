@@ -4,20 +4,13 @@
         <% data.forEach(request => { %>
             <li>
                 <div class="requests-request">
-                    <span>
-                        Name: <%= request.name %>
-                    </span>
-                    <span>
-                        Email: <%= request.email %>
-                    </span>
-                    <span>
-                        <%= request.name %>
-                    </span>
+                    <span>Name: <%= request.name %></span>
+                    <span>Email: <%= request.email %></span>
+                    <span><%= request.name %></span>
+                    <span><%= new Date(request.createdAt).toLocaleString('ru-RU', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) %></span>
                 </div>
+                <button class="requests-btn btn" data-id="<%= request._id %>">Delete</button>
             </li>
-            <form action="/delete-request/<%= request._id %>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="requests-btn btn">
-            </form>
         <% }) %>
     </ul>
 </section>

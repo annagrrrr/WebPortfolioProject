@@ -1,24 +1,25 @@
 <section class="default-section">
-    <h2 class="dashboard-header">Projects</h2>
-    <!-- <a href="/add-project" class="dashboard-btn dashboard-btn-add btn">+ Add New</a> -->
+    <div class="dashboard-projects-wrapper">
+        <h2 class="dashboard-header">Projects</h2>
+        <ul class="dashboard-projects">
+            <% data.forEach(project => { %>
+                <li>
+                    <div class="dashboard-project">
+                        <a href="/project/<%= project._id %>">
 
-    <ul class="dashboard-projects">
-        <% data.forEach(project => { %>
-            <li>
-                <div class="dashboard-project">
-                    <a href="/project/<%= project._id %>">
+                            <%= project.name %> &nearr;
+                        </a>
+                        <div class="dashboard-project-controls">
+                            <a href="/edit-project/<%= project._id %>" class="dashboard-btn btn">Edit</a>
 
-                        <%= project.name %> &nearr;
-                    </a>
-                    <div class="dashboard-project-controls">
-                        <a href="/edit-project/<%= project._id %>" class="dashboard-btn btn">Edit</a>
-
-                        <button class="dashboard-btn btn delete-btn" data-id="<%= project._id %>">Delete</button>
+                            <button class="dashboard-btn btn delete-btn" data-id="<%= project._id %>">Delete</button>
+                        </div>
                     </div>
-                </div>
-            </li>
-        <% }) %>
-    </ul>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    <!-- <a href="/add-project" class="dashboard-btn dashboard-btn-add btn">+ Add New</a> -->
 
     <h2 class="add-project-header">Add project</h2>
 

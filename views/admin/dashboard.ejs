@@ -1,44 +1,49 @@
 <section class="default-section">
-    <div class="dashboard-projects-wrapper">
-        <h2 class="dashboard-header">Projects</h2>
-        <ul class="dashboard-projects">
-            <% data.forEach(project => { %>
-                <li>
-                    <div class="dashboard-project">
-                        <a href="/project/<%= project._id %>">
+  <div class="dashboard-projects-wrapper">
+    <h2 class="dashboard-header">Projects</h2>
+    <ul class="dashboard-projects">
+      <% data.forEach(project => { %>
+        <li data-id="<%= project._id %>">
+          <div class="dashboard-project">
+            <div class="project-view">
+              <a href="/project/<%= project._id %>">
+                <h3 class="project-name"><%= project.name %></h3>
+              </a>
+              <p class="project-description"><%= project.description %></p>
+              <img src="<%= project.cover %>" alt="Cover">
+              <div class="dashboard-project-controls">
+                <button class="edit-btn dashboard-btn btn">Edit</button>
+                <button class="dashboard-btn btn delete-btn" data-id="<%= project._id %>">Delete</button>
+              </div>
+            </div>
 
-                            <%= project.name %> &nearr;
-                        </a>
-                        <div class="dashboard-project-controls">
-                            <a href="/edit-project/<%= project._id %>" class="dashboard-btn btn">Edit</a>
+            <form class="project-edit-form hidden">
+              <input type="text" name="name" value="<%= project.name %>">
+              <textarea name="description"><%= project.description %></textarea>
+              <input type="text" name="cover" value="<%= project.cover %>">
+              <div class="form-buttons">
+                <button type="button" class="save-btn dashboard-btn btn">Save</button>
+                <button type="button" class="cancel-btn dashboard-btn btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 
-                            <button class="dashboard-btn btn delete-btn" data-id="<%= project._id %>">Delete</button>
-                        </div>
-                    </div>
-                </li>
-            <% }) %>
-        </ul>
+  <h2 class="add-project-header">Add project</h2>
+  <form action="/add-project" method="POST" class="add-project">
+    <div class="add-project-input-box">
+      <input type="text" placeholder="Name" name="name">
     </div>
-    <!-- <a href="/add-project" class="dashboard-btn dashboard-btn-add btn">+ Add New</a> -->
+    <div class="add-project-input-box">
+      <textarea cols="50" rows="10" placeholder="Description" name="description"></textarea>
+    </div>
+    <div class="add-project-input-box">
+      <input type="text" placeholder="Cover (/img/<your_image>.png)" name="cover">
+    </div>
+    <input type="submit" value="Add" class="add-project-button btn">
+</form>
 
-    <h2 class="add-project-header">Add project</h2>
-
-    <form action="/add-project" method="POST" class="add-project">
-
-        <div class="add-project-input-box">
-            <input type="text" placeholder="Name" name="name">
-        </div>
-
-        <div class="add-project-input-box">
-            <textarea cols="50" rows="10" placeholder="Description" name="description"></textarea>
-        </div>
-            
-        <div class="add-project-input-box">
-            <input type="text" placeholder="Cover (/img/<your_image>.png)" name="cover">
-        </div>
-
-        <!-- <input type="text" placeholder="Images" name="images"> -->
-
-        <input type="submit" value="Add" class="add-project-button btn">
-        </form>
 </section>

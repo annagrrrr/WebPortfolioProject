@@ -173,20 +173,24 @@ router.get('/edit-project/:id', authMiddleware, async (req, res) => {
 
 //edit project put
 router.put('/edit-project/:id', authMiddleware, async (req, res) => {
-    
     try {
-        await Project.findByIdAndUpdate(req.params.id, {
-            name: req.body.name,
-            description: req.body.description,
-            cover: req.body.cover
-        });
+        const updatedProject = await Project.findByIdAndUpdate(
+            req.params.id,
+            {
+                name: req.body.name,
+                description: req.body.description,
+                cover: req.body.cover
+            },
+            { new: true }
+        );
 
-        res.redirect(`/edit-project/${req.params.id}`);
+        res.json(updatedProject);
     } catch (error) {
         console.log(error);
         return res.status(500).render('errors/500');
     }
 });
+
 
 //delete project
 router.delete('/delete-project/:id', authMiddleware, async (req, res) => {

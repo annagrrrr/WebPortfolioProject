@@ -441,8 +441,7 @@ textarea{
 }
 
 .contact {
-  /* CHANGE plss */
-  background-image: url("/img/landing-background-image.png");
+  background-image: url("/img/default-background3.png");
 }
 
 .contact-wrapper {
@@ -540,7 +539,6 @@ textarea{
 }
 
 .admin {
-  /* also change */
   background-image: url("/img/default-background.png");
 }
 
@@ -634,6 +632,12 @@ textarea{
   padding: 1rem 1.5rem;
   border-radius: var(--border-radius);
   transition: all 0.2s ease;
+}
+
+.dashboard-project img{
+  width: 100px;
+  border-radius: 10px;
+  margin: 15px 10px 10px 0;
 }
 
 .dashboard-project:hover {
@@ -850,4 +854,16 @@ textarea{
 .footer-socials-icon {
   max-width: 2rem;
   max-height: 2rem;
+}
+
+.dashboard-btn {
+  margin: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-buttons {
+  margin-top: 5px;
 }

@@ -28,6 +28,7 @@ router.get('/project/:id', async (req, res) => {
     const locals = {
       name: data.name,
       description: "This is my 3d-art portfolio",
+      hideHeader: true
     }
 
     res.render('project', { 
@@ -53,7 +54,12 @@ router.get('/project/:id', async (req, res) => {
 // insertProjectData();
 
 router.get('/contact', (req, res) => {
-    res.render('contact', {
+    const locals = {
+        title: "Contact",
+        description: "Contact me!",
+        hideHeader: true
+    };
+    res.render('contact', { locals
     });
 });
 

@@ -12,7 +12,9 @@
 <body>
 
     <div class="container">
-        <%- include('../partials/header.ejs')  %>
+        <% if (!locals.hideHeader) { %>
+            <%- include('../partials/header.ejs')  %>
+        <% } %>
         <main class="main">
             <%- body %>
         </main>

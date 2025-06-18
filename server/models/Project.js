@@ -17,6 +17,10 @@ const ProjectSchema = new Schema({
     images: {
         type: [String],
         default: []   
+    },
+    additionalinfo: {
+        type: String,
+        default: '',
     }
 })
 

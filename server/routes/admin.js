@@ -131,7 +131,8 @@ router.post('/add-project', authMiddleware, async (req, res) => {
         const newProject = new Project({
             name: req.body.name,
             description: req.body.description,
-            cover: req.body.cover
+            cover: req.body.cover,
+            additionalinfo: req.body.additionalinfo,
         });
 
         const savedProject = await newProject.save();
@@ -179,7 +180,8 @@ router.put('/edit-project/:id', authMiddleware, async (req, res) => {
             {
                 name: req.body.name,
                 description: req.body.description,
-                cover: req.body.cover
+                cover: req.body.cover,
+                additionalinfo: req.body.additionalinfo
             },
             { new: true }
         );

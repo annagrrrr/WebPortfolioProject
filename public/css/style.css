@@ -194,7 +194,7 @@ textarea{
 }
 
 .apps {
-  background: url('/img/background-apps.png') no-repeat center center/cover;
+  background: url('/img/character-project-bg.png') no-repeat center center/cover;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -440,7 +440,7 @@ textarea{
 }
 
 .contact {
-  background-image: url("/img/default-background3.png");
+  background-image: url("/img/character-project-bg.png");
 }
 
 .contact-wrapper {
@@ -806,7 +806,7 @@ textarea{
 }
 
 .request-sent {
-  background-image: url("/img/default-background2.png");
+  background-image: url("/img/character-project-bg.png");
 }
 
 .request-sent-wrapper {
@@ -834,7 +834,7 @@ textarea{
 }
 
 .error-container {
-  background-image: url("/img/default-background2.png");
+  background-image: url("/img/character-project-bg.png");
 }
 
 .error-back-btn {

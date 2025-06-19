@@ -956,3 +956,10 @@ textarea{
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 470px) {
+  .apps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}

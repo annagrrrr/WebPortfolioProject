@@ -296,8 +296,8 @@ textarea{
 
 .slider-container { 
   position: relative;
-  height: 100dvh;
-  width: 100dvh;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 

@@ -13,8 +13,8 @@
               <p class="project-additionalinfo"><%= project.additionalinfo %></p>
               <img src="<%= project.cover %>" alt="Cover">
               <div class="dashboard-project-controls">
-                <button class="edit-btn dashboard-btn btn">Edit</button>
-                <button class="dashboard-btn btn delete-btn" data-id="<%= project._id %>">Delete</button>
+                <button class="edit-btn dashboard-btn btn btn-border">Edit</button>
+                <button class="dashboard-btn btn delete-btn btn-border" data-id="<%= project._id %>">Delete</button>
               </div>
               <div class="old-project-data hidden">
                 <p class="old-name old-field"></p>
@@ -30,8 +30,8 @@
               <textarea name="additionalinfo"><%= project.additionalinfo %></textarea>
               <input type="text" name="cover" value="<%= project.cover %>">
               <div class="form-buttons">
-                <button type="button" class="save-btn dashboard-btn btn">Save</button>
-                <button type="button" class="cancel-btn dashboard-btn btn">Cancel</button>
+                <button type="button" class="save-btn dashboard-btn btn btn-border">Save</button>
+                <button type="button" class="cancel-btn dashboard-btn btn btn-border">Cancel</button>
               </div>
             </form>
           </div>
